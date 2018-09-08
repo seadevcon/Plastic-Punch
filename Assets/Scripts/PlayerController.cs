@@ -12,17 +12,34 @@ public class PlayerController : MonoBehaviour
     public float damage = 10;
 
     private float maxHP;
+
+    private Vector2 currentMoveVector;
+    private Vector2 lastMoveVector;
+
+    public delegate void MovingAction();
+    public static event MovingAction OnStartedMoving;
+
+    public delegate void StoppingAction();
+    public static event StoppingAction OnStoppedMoving;
+
+
     // Update is called once per frame
     private void Start()
     {
         maxHP = HP;
         updateHPBar();
+
+        lastMoveVector = currentMoveVector;
     }
     void Update()
     {
-        
-        Vector2 moveVector = new Vector2(Input.GetAxis("Horizontal_P1"), Input.GetAxis("Vertical_P1"));
-        player.GetComponent<Rigidbody2D>().velocity = (moveVector * speed);
+        currentMoveVector = new Vector2(Input.GetAxis("Horizontal_P1"), Input.GetAxis("Vertical_P1"));
+        player.GetComponent<Rigidbody2D>().velocity = (currentMoveVector * speed);
+
+        if (lastMoveVector.sqrMagnitude == 0 && currentMoveVector.sqrMagnitude != 0)
+            OnStartedMoving();
+        else if(currentMoveVector.sqrMagnitude == 0 && lastMoveVector.sqrMagnitude != 0)
+            OnStoppedMoving();
 
         if (Input.GetButtonDown("Fire_P1") && GetComponentInChildren<Hitbox>().EnemyList.Count != 0)
         {
@@ -36,6 +53,8 @@ public class PlayerController : MonoBehaviour
             }
 
         }
+
+        lastMoveVector = currentMoveVector;
     }
 
     public void getDamage(float damage)
