@@ -13,6 +13,7 @@ public class Enemy : MonoBehaviour
     private Vector2 direction;
     private Transform playerTransform;
     private bool chasePlayer;
+    private bool collidWPlayer;
     private void Start()
     {
     }
@@ -28,7 +29,11 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            direction = playerTransform.position - transform.position;
+            if (!collidWPlayer)
+            {
+                direction = playerTransform.position - transform.position;
+
+            }
         }
         direction = direction.normalized;
         GetComponent<Rigidbody2D>().velocity = new Vector2(direction.x * speed, direction.y * speed);
@@ -53,6 +58,20 @@ public class Enemy : MonoBehaviour
             {
                 chasePlayer = false;
             }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag =="Player")
+        {
+            collidWPlayer = true;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            collidWPlayer = false;
         }
     }
 }
