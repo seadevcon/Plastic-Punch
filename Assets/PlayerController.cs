@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
         Vector2 moveVector = new Vector2(Input.GetAxis("Horizontal_P1"), Input.GetAxis("Vertical_P1"));
         player.GetComponent<Rigidbody2D>().velocity = (moveVector * speed);
 
-        if (Input.GetButtonDown("Fire_P1") && GetComponentInChildren<Hitbox>().EnemyList.Count != 0)
+        if (Input.GetButtonDown("Horizontal_P2") && GetComponentInChildren<Hitbox>().EnemyList.Count != 0 || Input.GetButtonDown("Vertical_P2") && GetComponentInChildren<Hitbox>().EnemyList.Count != 0)
         {
             for (int i = 0; i < GetComponentInChildren<Hitbox>().EnemyList.Count; i++)
             {
