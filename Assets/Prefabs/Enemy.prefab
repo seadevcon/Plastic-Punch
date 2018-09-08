@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4469960782628398}
   - component: {fileID: 212146987973861888}
   - component: {fileID: 95581859609956168}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: UpperBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4009161660037074}
   - component: {fileID: 58745942138066074}
   - component: {fileID: 114923641192530140}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114510303280105210}
   - component: {fileID: 50162017631949200}
   - component: {fileID: 58078776777147280}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -72,7 +72,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4036790686239730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

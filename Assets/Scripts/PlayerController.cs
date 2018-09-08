@@ -16,16 +16,24 @@ public class PlayerController : MonoBehaviour
     private Vector2 currentMoveVector;
     private Vector2 lastMoveVector;
 
+    private Hitbox hitBox;
+    private Rigidbody2D rigigbody;
+
     public delegate void MovingAction();
     public static event MovingAction OnStartedMoving;
 
     public delegate void StoppingAction();
     public static event StoppingAction OnStoppedMoving;
 
+    public delegate void PunchAction(Hitbox.HitDirection hitDir);
+    public static event PunchAction OnPunch;
 
     // Update is called once per frame
     private void Start()
     {
+        rigigbody = player.GetComponent<Rigidbody2D>();
+        hitBox = GetComponentInChildren<Hitbox>();
+
         maxHP = HP;
         updateHPBar();
 
@@ -34,24 +42,26 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         currentMoveVector = new Vector2(Input.GetAxis("Horizontal_P1"), Input.GetAxis("Vertical_P1"));
-        player.GetComponent<Rigidbody2D>().velocity = (currentMoveVector * speed);
+        rigigbody.velocity = (currentMoveVector * speed);
 
         if (lastMoveVector.sqrMagnitude == 0 && currentMoveVector.sqrMagnitude != 0)
             OnStartedMoving();
         else if(currentMoveVector.sqrMagnitude == 0 && lastMoveVector.sqrMagnitude != 0)
             OnStoppedMoving();
 
-        if (Input.GetButtonDown("Horizontal_P2") && GetComponentInChildren<Hitbox>().EnemyList.Count != 0 || Input.GetButtonDown("Vertical_P2") && GetComponentInChildren<Hitbox>().EnemyList.Count != 0)
+        if (Input.GetButtonDown("Horizontal_P2") && hitBox.EnemyList.Count != 0 || Input.GetButtonDown("Vertical_P2") && hitBox.EnemyList.Count != 0)
         {
+            Debug.Log("punch");
+            OnPunch(hitBox.HitDir);
+
             for (int i = 0; i < GetComponentInChildren<Hitbox>().EnemyList.Count; i++)
             {
-                GetComponentInChildren<Hitbox>().EnemyList[i].GetComponent<Enemy>().GetDamage(damage);
-                if (GetComponentInChildren<Hitbox>().EnemyList[i].GetComponent<Enemy>().HP <= 0)
+                hitBox.EnemyList[i].GetComponent<Enemy>().GetDamage(damage);
+                if (hitBox.EnemyList[i].GetComponent<Enemy>().HP <= 0)
                 {
-                    Destroy(GetComponentInChildren<Hitbox>().EnemyList[i]);
+                    Destroy(hitBox.EnemyList[i]);
                 }
             }
-
         }
 
         lastMoveVector = currentMoveVector;

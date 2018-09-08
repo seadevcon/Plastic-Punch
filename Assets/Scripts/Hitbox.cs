@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Hitbox : MonoBehaviour {
+
+    public enum HitDirection { RIGHT, LEFT, UP, DOWN}
+    public HitDirection HitDir { get; private set; }
+
     public List<GameObject> EnemyList = new List<GameObject>();
-    // Use this for initialization
-    void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {
@@ -15,21 +15,25 @@ public class Hitbox : MonoBehaviour {
         {
             transform.localPosition = new Vector3(-0.5f, 0, 0);
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            HitDir = HitDirection.LEFT;
         }
         else if(Input.GetAxis("Horizontal_P2")>0)
         {
             transform.localPosition = new Vector3(0.5f, 0, 0);
             transform.rotation = Quaternion.Euler(0, 0, 0);
+            HitDir = HitDirection.RIGHT;
         }
-        if (Input.GetAxis("Vertical_P2") < 0)
+        else if (Input.GetAxis("Vertical_P2") < 0)
         {
             transform.localPosition = new Vector3(0, -0.5f, 0);
             transform.rotation = Quaternion.Euler(0, 0, 90);
+            HitDir = HitDirection.DOWN;
         }
         else if (Input.GetAxis("Vertical_P2") > 0)
         {
             transform.localPosition = new Vector3(0, 0.5f, 0);
             transform.rotation = Quaternion.Euler(0, 0, 90);
+            HitDir = HitDirection.UP;
         }
 
     }

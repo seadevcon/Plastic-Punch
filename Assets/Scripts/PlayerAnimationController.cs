@@ -11,6 +11,7 @@ public class PlayerAnimationController : MonoBehaviour {
     {
         PlayerController.OnStartedMoving += StartMoving;
         PlayerController.OnStoppedMoving += StopMoving;
+        PlayerController.OnPunch += Punch;
     }
 
 
@@ -18,6 +19,7 @@ public class PlayerAnimationController : MonoBehaviour {
     {
         PlayerController.OnStartedMoving -= StartMoving;
         PlayerController.OnStoppedMoving += StopMoving;
+        PlayerController.OnPunch -= Punch;
     }
 
     void StartMoving()
@@ -30,10 +32,12 @@ public class PlayerAnimationController : MonoBehaviour {
         LowerBody.SetTrigger(AnimationUtils.ANIM_PARAM_HASSTOPPED);
     }
 
-    void Punch()
+    void Punch(Hitbox.HitDirection hitDir)
     {
-        LowerBody.SetTrigger(AnimationUtils.ANIM_PARAM_ISMOVING);
-
+        if(hitDir == Hitbox.HitDirection.LEFT)
+            UpperBody.SetTrigger(AnimationUtils.ANIM_PARAM_PUNCHLEFT);
+        else if (hitDir == Hitbox.HitDirection.RIGHT)
+            LowerBody.SetTrigger(AnimationUtils.ANIM_PARAM_PUNCHRIGHT);
     }
 
 }
