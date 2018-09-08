@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         else if(currentMoveVector.sqrMagnitude == 0 && lastMoveVector.sqrMagnitude != 0)
             OnStoppedMoving();
 
-        if (Input.GetButtonDown("Fire_P1") && GetComponentInChildren<Hitbox>().EnemyList.Count != 0)
+        if (Input.GetButtonDown("Horizontal_P2") && GetComponentInChildren<Hitbox>().EnemyList.Count != 0 || Input.GetButtonDown("Vertical_P2") && GetComponentInChildren<Hitbox>().EnemyList.Count != 0)
         {
             for (int i = 0; i < GetComponentInChildren<Hitbox>().EnemyList.Count; i++)
             {
