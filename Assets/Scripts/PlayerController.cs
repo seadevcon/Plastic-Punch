@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public Image HPBar;
     public float speed;
-    public GameObject player;
+
     public float HP = 500;
     public bool enemyInside;
     public float damage = 10;
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private Hitbox hitBox;
     private Rigidbody2D rigigbody;
+    private GameObject Scriptholder;
 
     public delegate void MovingAction();
     public static event MovingAction OnStartedMoving;
@@ -31,7 +33,8 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     private void Start()
     {
-        rigigbody = player.GetComponent<Rigidbody2D>();
+        Scriptholder = GameObject.FindGameObjectWithTag("Scriptholder");
+        rigigbody = this.GetComponent<Rigidbody2D>();
         hitBox = GetComponentInChildren<Hitbox>();
         maxHP = HP;
         updateHPBar();
@@ -58,6 +61,8 @@ public class PlayerController : MonoBehaviour
                 if (hitBox.EnemyList[i].GetComponent<Enemy>().HP <= 0)
                 {
                     Destroy(hitBox.EnemyList[i]);
+                    Scriptholder.GetComponent<WaterPollution>().Killed();
+                    
                 }
             }
         }
@@ -69,6 +74,11 @@ public class PlayerController : MonoBehaviour
     {
         HP -= damage;
         updateHPBar();
+        if(HP <= 0)
+        {
+            Scriptholder.GetComponent<WaterPollution>().SafeKilledTrash();
+            SceneManager.LoadScene("Lose");
+        }
     }
     void updateHPBar()
     {
