@@ -18,7 +18,7 @@ public class PlayerAnimationController : MonoBehaviour {
     void OnDisable()
     {
         PlayerController.OnStartedMoving -= StartMoving;
-        PlayerController.OnStoppedMoving += StopMoving;
+        PlayerController.OnStoppedMoving -= StopMoving;
         PlayerController.OnPunch -= Punch;
     }
 
@@ -37,7 +37,7 @@ public class PlayerAnimationController : MonoBehaviour {
         if(hitDir == Hitbox.HitDirection.LEFT)
             UpperBody.SetTrigger(AnimationUtils.ANIM_PARAM_PUNCHLEFT);
         else if (hitDir == Hitbox.HitDirection.RIGHT)
-            LowerBody.SetTrigger(AnimationUtils.ANIM_PARAM_PUNCHRIGHT);
+            UpperBody.SetTrigger(AnimationUtils.ANIM_PARAM_PUNCHRIGHT);
     }
 
 }
