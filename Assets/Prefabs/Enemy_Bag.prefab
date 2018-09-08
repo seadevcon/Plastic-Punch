@@ -436,7 +436,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d29af72088edb1643bafc05868a54a95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: Infinity
+  HP: 10
   waypoint: {fileID: 0}
   speed: 1
   animationController: {fileID: 114262739130625082}

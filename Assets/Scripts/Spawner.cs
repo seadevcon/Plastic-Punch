@@ -23,16 +23,18 @@ public class Spawner : MonoBehaviour
         {
             int randomNumber = Random.Range(1, 6);
             int enemyRandom = Random.Range(1, 3);
-            Enemy1.GetComponent<Enemy>().HP *= randomNumber;
-            Enemy2.GetComponent<Enemy>().HP *= randomNumber;
+           
             yield return new WaitForSeconds(randomNumber);
             if (enemyRandom == 1)
             {
                 EnemyInst = Instantiate(Enemy1, transform.position, transform.rotation) as GameObject;
+                EnemyInst.GetComponent<Enemy>().HP *= randomNumber+5;
             }
             if(enemyRandom == 2)
             {
                 EnemyInst = Instantiate(Enemy2, transform.position, transform.rotation) as GameObject;
+                EnemyInst.GetComponent<Enemy>().HP *= randomNumber+5;
+
             }
         }
     }
