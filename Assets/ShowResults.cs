@@ -41,7 +41,7 @@ public class ShowResults : MonoBehaviour {
                 interval = 0.01f;
             else
             {
-                SceneManager.LoadScene("Game");
+                SceneManager.LoadScene("Info");
             }
         }
 
