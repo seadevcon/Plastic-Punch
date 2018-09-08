@@ -6,6 +6,7 @@ public class WaypointDestroy : MonoBehaviour
 {
     private GameObject Player;
     private GameObject Scriptholder;
+
     private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
@@ -16,7 +17,8 @@ public class WaypointDestroy : MonoBehaviour
         if (collision.tag == "Enemy")
         {
             Player.GetComponentInChildren<Hitbox>().EnemyList.Remove(collision.gameObject);
-            Destroy(collision.gameObject);
+            if(collision.gameObject != null)
+                Destroy(collision.gameObject);
             Scriptholder.GetComponent<WaterPollution>().Pollution();
         }
     }

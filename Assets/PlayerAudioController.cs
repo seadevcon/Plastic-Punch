@@ -17,7 +17,7 @@ public class PlayerAudioController : MonoBehaviour {
 
     void OnDisable()
     {
-        Enemy.OnGetHit -= GetHit;
+        PlayerController.OnPunch -= Punch;
     }
 
     void GetHit()
@@ -27,6 +27,5 @@ public class PlayerAudioController : MonoBehaviour {
     void Punch(Hitbox.HitDirection dir)
     {
         audioSource.PlayOneShot(PunchSounds[Random.Range(0, PunchSounds.Length)]);
-
     }
 }

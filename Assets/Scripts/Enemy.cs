@@ -13,8 +13,8 @@ public class Enemy : MonoBehaviour
     private bool chasePlayer;
     private bool collidWPlayer;
 
-    public delegate void GetHitAction();
-    public static event GetHitAction OnGetHit;
+    public EnemyAnimationController animationController;
+    public EnemyAudioController audioController;
 
     // Update is called once per frame
     void Update()
@@ -43,7 +43,8 @@ public class Enemy : MonoBehaviour
         HP -= damage;
         //Debug.Log(HP);
 
-        OnGetHit();
+        animationController.PlayAnimationWhenHit();
+        audioController.PlaySoundWhenHit();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -11,16 +11,9 @@ public class EnemyAudioController : MonoBehaviour {
     void OnEnable()
     {
         audioSource = GetComponent<AudioSource>();
-        Enemy.OnGetHit += GetHit;
-        //Enemy.OnPunch += Punch;
     }
 
-    void OnDisable()
-    {
-        Enemy.OnGetHit -= GetHit;
-    }
-
-    void GetHit()
+    public void PlaySoundWhenHit()
     {
         audioSource.PlayOneShot(HitSounds[Random.Range(0, HitSounds.Length)]);
     }
