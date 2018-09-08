@@ -772,6 +772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   image: {fileID: 1037315733168016, guid: 25bef1713324a254c884a8e54fe22925, type: 2}
+  infoText: {fileID: 299980605}
 --- !u!114 &2068853570
 MonoBehaviour:
   m_ObjectHideFlags: 0
