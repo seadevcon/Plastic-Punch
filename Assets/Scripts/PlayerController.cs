@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     public float HP = 500;
     public bool enemyInside;
     public float damage = 10;
+    public AudioClip[] HitSounds;
 
     private float maxHP;
 
@@ -18,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private Hitbox hitBox;
     private Rigidbody2D rigigbody;
+    private AudioSource audioSource;
 
     public delegate void MovingAction();
     public static event MovingAction OnStartedMoving;
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
     {
         rigigbody = player.GetComponent<Rigidbody2D>();
         hitBox = GetComponentInChildren<Hitbox>();
+        audioSource = GetComponent<AudioSource>();
 
         maxHP = HP;
         updateHPBar();
@@ -51,8 +54,8 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Horizontal_P2") && hitBox.EnemyList.Count != 0 || Input.GetButtonDown("Vertical_P2") && hitBox.EnemyList.Count != 0)
         {
-            Debug.Log("punch");
             OnPunch(hitBox.HitDir);
+            audioSource.PlayOneShot(HitSounds[Random.Range(0, HitSounds.Length)]);
 
             for (int i = 0; i < GetComponentInChildren<Hitbox>().EnemyList.Count; i++)
             {
