@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-
-
     public float HP = 100;
     public Transform waypoint;
     public float speed = 2;
@@ -14,9 +12,10 @@ public class Enemy : MonoBehaviour
     private Transform playerTransform;
     private bool chasePlayer;
     private bool collidWPlayer;
-    private void Start()
-    {
-    }
+
+    public delegate void GetHitAction();
+    public static event GetHitAction OnGetHit;
+
     // Update is called once per frame
     void Update()
     {
@@ -42,7 +41,9 @@ public class Enemy : MonoBehaviour
     public void GetDamage(float damage)
     {
         HP -= damage;
-        Debug.Log(HP);
+        //Debug.Log(HP);
+
+        OnGetHit();
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
