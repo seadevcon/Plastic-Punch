@@ -549,7 +549,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HPBar: {fileID: 0}
   speed: 2
-  player: {fileID: 1324138259662686}
   HP: 500
   enemyInside: 0
   damage: 10

@@ -18,9 +18,9 @@ public class Spawner : MonoBehaviour
         GameObject EnemyInst;
         while (true)
         {
-
+            int randomNumber = Random.Range(1, 5);
             EnemyInst = Instantiate(Enemy, transform.position, transform.rotation) as GameObject;
-            yield return new WaitForSeconds(5);
+            yield return new WaitForSeconds(randomNumber);
         }
     }
 }
