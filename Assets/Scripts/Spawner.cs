@@ -5,11 +5,14 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public GameObject Enemy;
+    public GameObject Enemy1;
+    public GameObject Enemy2;
     public Transform Waypoint;
     private void Start()
     {
-        Enemy.GetComponent<Enemy>().waypoint = Waypoint;
+        Enemy1.GetComponent<Enemy>().waypoint = Waypoint;
+        Enemy2.GetComponent<Enemy>().waypoint = Waypoint;
+
         StartCoroutine("SpawnEnemy");
     }
 
@@ -18,9 +21,19 @@ public class Spawner : MonoBehaviour
         GameObject EnemyInst;
         while (true)
         {
-            int randomNumber = Random.Range(1, 5);
-            EnemyInst = Instantiate(Enemy, transform.position, transform.rotation) as GameObject;
+            int randomNumber = Random.Range(1, 6);
+            int enemyRandom = Random.Range(1, 3);
+            Enemy1.GetComponent<Enemy>().HP *= randomNumber;
+            Enemy2.GetComponent<Enemy>().HP *= randomNumber;
             yield return new WaitForSeconds(randomNumber);
+            if (enemyRandom == 1)
+            {
+                EnemyInst = Instantiate(Enemy1, transform.position, transform.rotation) as GameObject;
+            }
+            if(enemyRandom == 2)
+            {
+                EnemyInst = Instantiate(Enemy2, transform.position, transform.rotation) as GameObject;
+            }
         }
     }
 }

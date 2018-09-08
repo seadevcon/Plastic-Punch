@@ -1607,7 +1607,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340393d32bf37fa4b94295644f23f86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1815265633657932, guid: 2079affd7e1fa9445a96c18d23a0e8a5, type: 2}
+  Enemy1: {fileID: 1815265633657932, guid: 2079affd7e1fa9445a96c18d23a0e8a5, type: 2}
+  Enemy2: {fileID: 1275919858806698, guid: 3837ff9cd58b3fb4d9031aabea8513c6, type: 2}
   Waypoint: {fileID: 1774735421}
 --- !u!4 &1161206118
 Transform:
@@ -1649,7 +1650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340393d32bf37fa4b94295644f23f86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1815265633657932, guid: 2079affd7e1fa9445a96c18d23a0e8a5, type: 2}
+  Enemy1: {fileID: 1815265633657932, guid: 2079affd7e1fa9445a96c18d23a0e8a5, type: 2}
+  Enemy2: {fileID: 1275919858806698, guid: 3837ff9cd58b3fb4d9031aabea8513c6, type: 2}
   Waypoint: {fileID: 744571014}
 --- !u!4 &1299712686
 Transform:
@@ -1760,7 +1762,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340393d32bf37fa4b94295644f23f86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1815265633657932, guid: 2079affd7e1fa9445a96c18d23a0e8a5, type: 2}
+  Enemy1: {fileID: 1815265633657932, guid: 2079affd7e1fa9445a96c18d23a0e8a5, type: 2}
+  Enemy2: {fileID: 1275919858806698, guid: 3837ff9cd58b3fb4d9031aabea8513c6, type: 2}
   Waypoint: {fileID: 1848335872}
 --- !u!4 &1468396367
 Transform:
@@ -2876,7 +2879,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340393d32bf37fa4b94295644f23f86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1815265633657932, guid: 2079affd7e1fa9445a96c18d23a0e8a5, type: 2}
+  Enemy1: {fileID: 1815265633657932, guid: 2079affd7e1fa9445a96c18d23a0e8a5, type: 2}
+  Enemy2: {fileID: 1275919858806698, guid: 3837ff9cd58b3fb4d9031aabea8513c6, type: 2}
   Waypoint: {fileID: 1531565682}
 --- !u!4 &1805254596
 Transform:
@@ -3124,7 +3128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 340393d32bf37fa4b94295644f23f86a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 1815265633657932, guid: 2079affd7e1fa9445a96c18d23a0e8a5, type: 2}
+  Enemy1: {fileID: 1815265633657932, guid: 2079affd7e1fa9445a96c18d23a0e8a5, type: 2}
+  Enemy2: {fileID: 1275919858806698, guid: 3837ff9cd58b3fb4d9031aabea8513c6, type: 2}
   Waypoint: {fileID: 1822808660}
 --- !u!4 &1908863130
 Transform:
