@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour
 {
     public Image HPBar;
@@ -20,7 +21,10 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        
+        if(HP <= 0)
+        {
+            SceneManager.LoadScene("LoseScene");
+        }
         Vector2 moveVector = new Vector2(Input.GetAxis("Horizontal_P1"), Input.GetAxis("Vertical_P1"));
         player.GetComponent<Rigidbody2D>().velocity = (moveVector * speed);
 
